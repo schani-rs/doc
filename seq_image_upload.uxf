@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLSequenceAllInOne</id>
+    <coordinates>
+      <x>200</x>
+      <y>100</y>
+      <w>830</w>
+      <h>820</h>
+    </coordinates>
+    <panel_attributes>title=Image upload
+autoTick=true
+obj=Lifeline Client~c
+obj=Lifeline Import~i
+obj=Lifeline Library~l
+obj=Lifeline Store~s
+obj=Lifeline Processor Queue~p
+
+on=c
+c-&gt;i : upload image metadata\n-user_id \n-filename \n; on=i
+	i.&gt;&gt;&gt;c ; off=i
+	c-&gt;&gt;&gt;i : upload image data\n- binary data; on=i
+
+	i-&gt;&gt;&gt;s : create raw object; on=s
+	s.&gt;i : raw_image_id; off=s
+
+	i-&gt;&gt;&gt;l : create image\n-user_id\n-filename\n-raw_image_id;on=l
+		l.&gt;&gt;&gt;p : enqueue\n-image_id
+	l.&gt;i ; off=l
+
+i.&gt;c ; off=i
+off=c
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

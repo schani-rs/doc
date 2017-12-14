@@ -1,0 +1,15 @@
+language: rust
+
+branches:
+  only:
+    - master
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y umlet
+
+script:
+  - ./build.sh
+  #- git status --porcelain | awk 'match($1, "M"){print $2}'
+  #- if [ $(git status --porcelain | awk 'match($1, "M"){print $2}' | wc -l) -gt 0 ]; then false ; fi
+

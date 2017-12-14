@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLSequenceAllInOne</id>
+    <coordinates>
+      <x>200</x>
+      <y>100</y>
+      <w>840</w>
+      <h>680</h>
+    </coordinates>
+    <panel_attributes>title=Image processing
+autoTick=true
+obj=Lifeline Processor~p
+obj=Lifeline Processor Queue~pq
+obj=Lifeline Library~l
+obj=Lifeline Store~s
+
+on=pq
+
+p-&gt;&gt;&gt;pq : get_next_message() ; on=p
+pq.&gt;p : message
+
+p-&gt;&gt;&gt;l : get_image_info()\n-image_id ; on=l
+l-&gt;p : image_info ; off=l
+
+p-&gt;&gt;&gt;s : get_raw_image()\n-raw_image_id ; on=s
+s-&gt;p : raw_image ; off=s
+
+p-&gt;&gt;&gt;s : save_image()\n-image ; on=s
+s.&gt;p : image_id ; off=s
+
+p-&gt;&gt;&gt;l : update_image_id()\n-image_id ; on=l
+l.&gt;p ; off=l
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

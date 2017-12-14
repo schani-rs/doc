@@ -1,4 +1,7 @@
 language: rust
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y umlet
 script:
   - ./build.sh
   - test $(git status --porcelain | awk 'match($1, "M"){print $2}' | wc -l) -gt 0 && exit 1

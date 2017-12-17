@@ -18,8 +18,8 @@ obj=Lifeline Store~s
 obj=Lifeline Processor Queue~p
 
 on=c
-c-&gt;i : upload image metadata\n-user_id \n-filename \n; on=i
-	i.&gt;&gt;&gt;c ; off=i
+c-&gt;&gt;&gt;i : upload image metadata\n-user_id \n-filename \n; on=i
+	i.&gt;c ; off=i
 	c-&gt;&gt;&gt;i : upload image data\n- binary data; on=i
 
 	i-&gt;&gt;&gt;s : create raw object; on=s
